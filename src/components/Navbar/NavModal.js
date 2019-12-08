@@ -34,6 +34,7 @@ export class NavModal extends Component {
 							<Link
 								to={links[index]}
 								onClick={() => closeNavModal()}
+								key={index}
 							>
 								<li>{link}</li>
 							</Link>

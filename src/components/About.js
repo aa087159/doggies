@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function About() {
-	return (
-		<div className='about'>
-			<div className='about-bg'></div>
-			<div className='about-main'>about</div>
-		</div>
-	);
+export class About extends Component {
+	render() {
+		return (
+			<>
+				<div id='nav' className='nav'>
+					<div className='nav_text'>
+						<h1>hi</h1>
+					</div>
+				</div>
+			</>
+		);
+	}
 }
+
+export default About;

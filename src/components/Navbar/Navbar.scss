@@ -47,7 +47,7 @@ nav {
 }
 
 .navModal {
-	z-index: 2;
+	z-index: 5 !important;
 	color: #fff;
 	background: rgba(0, 0, 0, 0.9);
 	border-radius: 50%;
@@ -86,7 +86,7 @@ nav {
 	position: fixed;
 	right: 5rem;
 	top: 2rem;
-	z-index: 3;
+	z-index: 4;
 }
 .hamburger > div {
 	z-index: 3;

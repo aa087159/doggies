@@ -35,7 +35,7 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
-  width: 90%;
+  width: 100%;
   height: 100vh;
   margin: auto;
   overflow: hidden;
@@ -59,7 +59,7 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  z-index: 1;
+  z-index: 0;
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
   border-radius: 55%;
@@ -77,11 +77,23 @@
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1/3;
-  margin-bottom: 0px !important;
 }
 
-.slick-slide img {
+.slick-track {
+  height: 100%;
+}
+
+.slick-slide > div {
   width: 100%;
+  height: 100%;
+}
+
+.slick-slide > div > div {
+  width: 100%;
+  height: 100%;
+}
+
+.slick-slide > div > div img {
   height: 100%;
 }
 
@@ -98,24 +110,38 @@
       -ms-grid-row-align: center;
       align-self: center;
   margin-bottom: 70px !important;
+  z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  -webkit-transition-delay: 2s;
+          transition-delay: 2s;
 }
 
 .slick-thumb img {
   width: 7rem;
   height: 7rem;
   border-radius: 50%;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
   -webkit-filter: grayscale(100%);
           filter: grayscale(100%);
 }
 
 .slick-thumb img:hover {
-  border: 2px solid #fff;
+  border: 5px solid #fff;
 }
 
-.slick-active img {
-  border: 2px solid #fff;
+.slick-thumb .slick-active img {
+  border: 5px solid #fff;
   -webkit-filter: grayscale(0%);
           filter: grayscale(0%);
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
 }
 
 .slick-dots {
@@ -163,6 +189,22 @@
       align-self: center;
 }
 
+.svgOne {
+  position: absolute;
+  top: 0px;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
 @media screen and (max-width: 940px) {
   .slick-thumb img {
     width: 6rem;
@@ -173,14 +215,11 @@
   }
 }
 
-.about-bg {
-  background: url(/img/HomeImgs/q.png);
-  display: inline-block;
-  background-size: 90vw 50px;
-  background-repeat: no-repeat;
-  margin-top: -100px;
-  width: 90vw;
-  height: 50px;
-  z-index: 10000000;
+/*About*/
+.about {
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  overflow: hidden;
 }
 /*# sourceMappingURL=Home.css.map */
