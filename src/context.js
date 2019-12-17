@@ -10,6 +10,10 @@ class ShopProvider extends Component {
 		this.setState({ navOpen: !this.state.navOpen });
 	};
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return false;
+	}
+
 	closeNavModal = () => {
 		this.setState({ navOpen: false });
 	};

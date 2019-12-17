@@ -1,6 +1,11 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	withRouter
+} from 'react-router-dom';
 import Home from './pages/Home';
 import Products from './pages/Products';
 import SingleProduct from './pages/SingleProduct';
@@ -9,11 +14,13 @@ import Navbar from './components/Navbar';
 import NavModal from './components/Navbar/NavModal';
 import { ShopProvider } from './context';
 
+const WithRouterNavbar = withRouter(Navbar);
+
 function App() {
 	return (
 		<ShopProvider>
 			<Router>
-				<Navbar />
+				<WithRouterNavbar />
 				<Switch>
 					<Route path='/' exact component={Home} />
 					<Route path='/products' exact component={Products} />

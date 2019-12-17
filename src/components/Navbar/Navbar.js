@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FaDog, FaPhone, FaCat, FaHome } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './Navbar.css';
@@ -9,22 +8,44 @@ import styled from 'styled-components';
 export class Navbar extends Component {
 	state = {
 		NavTexts: ['關於我們', '手做', '四隻腳', '聯絡我們'],
-		ScrollTo: ['section-b', 'section-c', 'section-d', 'section-e'],
+		ScrollTo: ['about', 'homeProducts', 'animals', 'contact'],
 		NavIcon: [
-			<FaHome size='28' />,
-			<FaDog size='28' />,
-			<FaCat size='28' />,
-			<FaPhone size='28' />
-		]
+			<i className='fas fa-home fa-2x'></i>,
+			<i className='fas fa-dog fa-2x'></i>,
+			<i className='fas fa-cat fa-2x'></i>,
+			<i className='fas fa-phone fa-2x'></i>
+		],
+		IsNavScrollAppear: true
 	};
 
 	static contextType = ShopContext;
 
+	navVisible = React.createRef();
+
+	componentDidMount() {
+		window.addEventListener('scroll', (e) => this.handleScroll(e));
+		setTimeout(() => {
+			this.navVisible.current.classList.add('visible');
+		}, 800);
+	}
+
+	handleScroll = (e) => {
+		const window = e.currentTarget;
+
+		if (this.prev > window.scrollY) {
+			this.navVisible.current.classList.remove('scrollNavShow');
+		} else if (this.prev < window.scrollY) {
+			this.navVisible.current.classList.add('scrollNavShow');
+		}
+		this.prev = window.scrollY;
+	};
+
 	render() {
 		const { NavOpenHandler, navOpen } = this.context;
+
 		return (
 			<>
-				<nav className='navbar'>
+				<nav className='navbar' ref={this.navVisible}>
 					<ul>
 						<li>
 							<Link to='/'>
@@ -43,7 +64,7 @@ export class Navbar extends Component {
 									to={this.state.ScrollTo[index]}
 									spy={true}
 									smooth='easeInQuad'
-									offset={0}
+									offset={-50}
 									duration={500}
 									key={index}
 								>
