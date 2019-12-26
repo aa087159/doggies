@@ -1,6 +1,5 @@
 import React from 'react';
 import CurlySVG from '../components/CurlySVG.js';
-import HomeProducts from '../components/HomeProducts.js';
 
 function useOnScreen(options) {
 	const ref = React.useRef();
@@ -9,6 +8,9 @@ function useOnScreen(options) {
 	React.useEffect(() => {
 		const observer = new IntersectionObserver(([entry]) => {
 			setVisible(entry.isIntersecting);
+			if (entry.intersectionRatio > 0) {
+				observer.unobserve(ref.current);
+			}
 		}, options);
 
 		if (ref.current) {
@@ -20,11 +22,6 @@ function useOnScreen(options) {
 
 export default function About() {
 	const [ref, visible] = useOnScreen({ rootMargin: '-1px' });
-
-	const low =
-		'M0,1034.015c0,0-3.521,101.979,103.235,46.377C311.931,971.695,177.388,615.666,275.696,663c39.13,18.841,37.681,500,292.753,460.869c207.485-31.831-53.62-211.594,49.275-362.318c121.699-178.269,182.479,459.704,262.319,421.739c207.25-98.551,37.798-142.873,113.043-234.783c215.942-263.768,94.107,208.804,291.305,210.146c241.311,1.642-42.964-425.29,23.188-415.942c133.333,18.841,267.205,446.205,327.536,343.479c160.869-273.913,11.595,173.913,185.508-79.71c355.178-517.967,14.492,136.231,111.594,146.377c117.571,12.284,156.782-75.362,156.782-75.362V1269H0V1034.015z';
-	const high =
-		'M0,0c0,0,82.942,0,159.753,0c106.144,0-42.029,0,92.754,0 c149.106,0,40.58,0,185.507,0c169.224,0,62.319,0,181.159,0c103.397,0,27.536,0,115.942,0c106.893,0,8.753,0.13,127.536,0 c107.139-0.118,15.846-1.341,213.043,0c241.311,1.642,128.986,0,236.232,0c103.396,0,34.782,0,192.754,0 c163.98,0,58.083,0,227.536,0c172.464,0,91.304,0,205.797,0C2056.226,0,2089,0,2089,0v1269H0V0z';
 
 	return (
 		<div className='about' id='about' ref={ref}>
@@ -67,8 +64,7 @@ export default function About() {
 				當你努力想完成一個夢想時， 全世界都會湧來幫助你！
 				<br />
 			</p>
-			<HomeProducts />
-			<CurlySVG duration='1000' visible={visible} low={low} high={high} />
+			<CurlySVG visible={visible} />
 		</div>
 	);
 }

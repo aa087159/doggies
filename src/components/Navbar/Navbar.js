@@ -24,9 +24,7 @@ export class Navbar extends Component {
 
 	componentDidMount() {
 		window.addEventListener('scroll', (e) => this.handleScroll(e));
-		setTimeout(() => {
-			this.navVisible.current.classList.add('visible');
-		}, 800);
+		this.navVisible.current.classList.add('visible');
 	}
 
 	handleScroll = (e) => {
@@ -64,7 +62,7 @@ export class Navbar extends Component {
 									to={this.state.ScrollTo[index]}
 									spy={true}
 									smooth='easeInQuad'
-									offset={-50}
+									offset={-100}
 									duration={500}
 									key={index}
 								>

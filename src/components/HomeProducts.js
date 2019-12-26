@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import CurlySVG from '../components/CurlySVG.js';
 
 export class HomeProducts extends Component {
 	state = {
@@ -15,23 +16,54 @@ export class HomeProducts extends Component {
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, rem?',
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, rem?',
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, rem?'
-		]
+		],
+		visible: false
 	};
+	ref = React.createRef();
+
+	async componentDidMount() {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				this.setState({ visible: entry.isIntersecting });
+				if (entry.intersectionRatio > 0) {
+					observer.unobserve(this.ref.current);
+				}
+			},
+			{
+				rootMargin: '-1px'
+			}
+		);
+
+		if (this.ref.current) {
+			observer.observe(this.ref.current);
+		}
+	}
+
 	render() {
 		return (
-			<div className='homeProducts' id='homeProducts'>
-				{this.state.homeProducts.map((product, index) => {
-					return (
-						<div key={index}>
-							<img src={this.state.imgUrls[index]} alt='' />
-							<h1>{product}</h1>
-							<p>{this.state.texts[index]}</p>
-							<Link to='/products'>
-								<button>more</button>
-							</Link>
-						</div>
-					);
-				})}
+			<div className='homeProductsWrapper' ref={this.ref}>
+				<h1 className='homeProductsTitle'>Our Products</h1>
+				<div className='homeProducts' id='homeProducts'>
+					{this.state.homeProducts.map((product, index) => {
+						return (
+							<div key={index}>
+								<div
+									className='img'
+									style={{
+										backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(${this.state.imgUrls[index]})`
+									}}
+								>
+									<h1>{product}</h1>
+									<p>{this.state.texts[index]}</p>
+									<Link to='/products'>
+										<button>more</button>
+									</Link>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+				<CurlySVG visible={this.state.visible} />
 			</div>
 		);
 	}
