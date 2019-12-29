@@ -168,15 +168,9 @@ nav ul > a:nth-child(3) {
 .hamburger > div::after {
   content: '';
   position: absolute;
-  top: -10px;
   width: 100%;
   height: 3px;
   background: inherit;
-}
-
-/* Moves Line Down */
-.hamburger > div::after {
-  top: 10px;
 }
 
 .scrollNavShow {

@@ -8,6 +8,7 @@ import About from '../../components/About.js';
 import HomeProducts from '../../components/HomeProducts.js';
 import Animals from '../../components/Animals.js';
 import Contact from '../../components/Contact.js';
+import MainFooter from '../../components/MainFooter.js';
 
 export default function Home(props) {
 	const elem = document.getElementsByClassName('slick-thumb');
@@ -28,6 +29,7 @@ export default function Home(props) {
 						<HomeProducts />
 						<Animals />
 						<Contact />
+						<MainFooter />
 					</>
 				);
 			}}

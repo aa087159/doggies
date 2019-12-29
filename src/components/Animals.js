@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick';
 import CurlySVG from './CurlySVG.js';
+import PhotoGallery from './PhotoGallery';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import styled from 'styled-components';
-import photoGallery from './photoGallery.js';
 
 function BarWrapper(props) {
 	return (
@@ -139,7 +139,7 @@ export default class Animals extends Component {
 						})}
 					</Slider>
 					<div className='hiddenPics'>
-						<photoGallery />
+						<PhotoGallery />
 					</div>
 					<div
 						className='petPicArrow'

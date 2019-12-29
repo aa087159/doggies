@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import Gallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 
-const photoGallery = () => {
+export default function PhotoGallery() {
 	const photos = [
 		{
 			src: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599',
@@ -50,6 +50,7 @@ const photoGallery = () => {
 			height: 3
 		}
 	];
+
 	const [currentImage, setCurrentImage] = useState(0);
 	const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -82,6 +83,4 @@ const photoGallery = () => {
 			</ModalGateway>
 		</div>
 	);
-};
-
-export default photoGallery;
+}

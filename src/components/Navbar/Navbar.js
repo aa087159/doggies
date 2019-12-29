@@ -15,7 +15,8 @@ export class Navbar extends Component {
 			<i className='fas fa-cat fa-2x'></i>,
 			<i className='fas fa-phone fa-2x'></i>
 		],
-		IsNavScrollAppear: true
+		IsNavScrollAppear: true,
+		scrollOffset: [-150, -250, -190, 50]
 	};
 
 	static contextType = ShopContext;
@@ -62,7 +63,7 @@ export class Navbar extends Component {
 									to={this.state.ScrollTo[index]}
 									spy={true}
 									smooth='easeInQuad'
-									offset={-100}
+									offset={this.state.scrollOffset[index]}
 									duration={500}
 									key={index}
 								>
