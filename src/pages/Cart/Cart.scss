@@ -1,0 +1,95 @@
+$pink: #f2e1dd;
+$darker-pink: rgb(219, 171, 161);
+$darkiest-pink: rgb(194, 127, 114);
+$dark: rgb(155, 83, 69);
+$regTrainsition: 0.4s;
+
+.CartSVG {
+	svg {
+		path {
+			fill: $pink;
+		}
+	}
+}
+
+@mixin RegButton($radius, $border-color) {
+	background: transparent;
+	border: 4px solid $border-color;
+	border-radius: $radius;
+	color: $border-color;
+	font-family: ch;
+	font-size: 25px;
+	cursor: pointer;
+	transition: $regTrainsition;
+	&:focus {
+		outline: none;
+	}
+	&:hover {
+		color: #fff;
+		background-color: $border-color;
+	}
+	&:active {
+		color: #fff;
+		background-color: $border-color;
+	}
+}
+
+//empty cart
+.emptyCart {
+	font-size: 20px;
+	font-family: ch;
+	color: $dark;
+	text-align: center;
+	margin: auto;
+	padding: 6rem;
+	letter-spacing: 3px;
+	button {
+		padding: 0 1rem;
+		margin-top: 2rem;
+		@include RegButton(15px, $darkiest-pink);
+	}
+}
+
+.cartWrapper {
+	background-color: $pink;
+	padding: 2rem 8rem;
+	display: flex;
+	font-family: ch;
+	.cart-left {
+		flex-grow: 7;
+		.cart-column {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+			text-align: center;
+			padding: 1rem;
+			margin: 1rem;
+			.column {
+				font-size: 30px;
+			}
+		}
+	}
+	.cart-right {
+		flex-grow: 3;
+	}
+}
+
+//cart single item
+.cart-item {
+	background-color: #fff;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+	text-align: center;
+	align-items: center;
+	margin: 1rem;
+	padding: 1rem;
+	font-size: 25px;
+	border-radius: 15px;
+	.cart-item-description {
+		img {
+			width: 6rem;
+			height: 6rem;
+			border-radius: 50%;
+			border: 4px solid $darker-pink;
+		}
+	}
+}

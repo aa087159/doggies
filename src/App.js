@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -9,6 +8,8 @@ import {
 import Home from './pages/Home';
 import Products from './pages/Products';
 import SingleProduct from './pages/SingleProduct';
+import Favorites from './pages/Favorites';
+import Cart from './pages/Cart';
 import Error from './pages/Error';
 import Navbar from './components/Navbar';
 import NavModal from './components/Navbar/NavModal';
@@ -25,10 +26,12 @@ function App() {
 					<Route path='/' exact component={Home} />
 					<Route path='/products' exact component={Products} />
 					<Route
-						path='/products/:id'
+						path='/products/:singleProductURL'
 						exact
 						component={SingleProduct}
 					/>
+					<Route path='/favorites' component={Favorites} />
+					<Route path='/cart' component={Cart} />
 					<Route component={Error} />
 				</Switch>
 				<NavModal />

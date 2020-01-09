@@ -7,24 +7,8 @@ export class NavModal extends Component {
 	static contextType = ShopContext;
 	render() {
 		const { navOpen, closeNavModal } = this.context;
-		const linkNames = [
-			'首頁',
-			'刺繡',
-			'布作',
-			'針織',
-			'木作',
-			'四隻腳',
-			'關於我們'
-		];
-		const links = [
-			'/',
-			'/products',
-			'/products',
-			'/products',
-			'/products',
-			'/products',
-			'/products'
-		];
+		const linkNames = ['首頁', '手做商品', '我的最愛', '購物車'];
+		const links = ['/', '/products', '/favorites', '/cart'];
 
 		return (
 			<StyledNavModal navOpen={navOpen}>

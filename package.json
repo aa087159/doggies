@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "contentful": "^7.11.4",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.8.6",
     "react-anime": "^2.2.0",

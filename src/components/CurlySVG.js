@@ -38,7 +38,7 @@ export class CurlySVG extends Component {
 						duration={1000}
 						d={[high, low]}
 					>
-						<path fill='pink' d={low}></path>
+						<path d={low}></path>
 					</Anime>
 				</svg>
 			</>

@@ -729,6 +729,10 @@
   grid-row: 1/2;
 }
 
+.contactWrapper svg path {
+  fill: #ffc0cb;
+}
+
 .contactWrapper .container {
   display: -webkit-box;
   display: -ms-flexbox;
