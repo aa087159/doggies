@@ -52,7 +52,7 @@ $regTrainsition: 0.4s;
 
 .cartWrapper {
 	background-color: $pink;
-	padding: 2rem 8rem;
+	padding: 2rem 8rem 6rem 8rem;
 	display: flex;
 	font-family: ch;
 	.cart-left {
@@ -70,6 +70,36 @@ $regTrainsition: 0.4s;
 	}
 	.cart-right {
 		flex-grow: 3;
+		background-color: $darker-pink;
+		text-align: center;
+		padding: 1rem;
+		margin: 1rem;
+		border-radius: 15px;
+		display: flex;
+		flex-direction: column;
+		max-height: 60vh;
+		position: relative;
+		p {
+			font-size: 30px;
+		}
+		button {
+			@include RegButton(15px, $dark);
+			padding: 1rem;
+		}
+		.price {
+			p {
+				margin-bottom: 1rem;
+			}
+		}
+		.paypal {
+			position: absolute;
+			bottom: 10%;
+			left: 50%;
+			transform: translate(-50%);
+			button {
+				margin-bottom: 1rem;
+			}
+		}
 	}
 }
 
@@ -91,5 +121,16 @@ $regTrainsition: 0.4s;
 			border-radius: 50%;
 			border: 4px solid $darker-pink;
 		}
+	}
+	.count {
+		display: flex;
+		justify-self: center;
+		cursor: pointer;
+		p:nth-child(2) {
+			margin: 0 1rem;
+		}
+	}
+	.trash {
+		cursor: pointer;
 	}
 }

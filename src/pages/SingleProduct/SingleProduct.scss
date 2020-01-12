@@ -1,10 +1,54 @@
+$orange: #ffe0b2;
+$darker-orange: #ffb74d;
+$darkiest-orange: #fb8c00;
+$dark: #e65100;
+
 .singleProductPage {
-	padding-top: 9rem;
+	padding-top: 10rem;
 	width: 80%;
 	margin: auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
 	grid-column-gap: 3rem;
+	font-family: ch;
+}
+
+//single Product description
+.description {
+	display: flex;
+	flex-direction: column;
+	.section-a {
+		& > * {
+			margin-bottom: 10px;
+		}
+	}
+	.name {
+		display: flex;
+		h1 {
+			font-size: 50px;
+		}
+		i {
+			margin: auto auto auto 20px;
+			cursor: pointer;
+		}
+	}
+	.productmaterial {
+		display: flex;
+	}
+	h1 {
+		font-size: 50px;
+	}
+	hr {
+		border: 1px solid $orange;
+	}
+	.section-b {
+		& > * {
+			margin-bottom: 10px;
+		}
+		//select option styling
+		.option {
+		}
+	}
 }
 
 //single product carousel

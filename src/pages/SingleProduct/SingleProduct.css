@@ -1,5 +1,5 @@
 .singleProductPage {
-  padding-top: 9rem;
+  padding-top: 10rem;
   width: 80%;
   margin: auto;
   display: -ms-grid;
@@ -7,6 +7,54 @@
   -ms-grid-columns: (minmax(50px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   grid-column-gap: 3rem;
+  font-family: ch;
+}
+
+.description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.description .section-a > * {
+  margin-bottom: 10px;
+}
+
+.description .name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.description .name h1 {
+  font-size: 50px;
+}
+
+.description .name i {
+  margin: auto auto auto 20px;
+  cursor: pointer;
+}
+
+.description .productmaterial {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.description h1 {
+  font-size: 50px;
+}
+
+.description hr {
+  border: 1px solid #ffe0b2;
+}
+
+.description .section-b > * {
+  margin-bottom: 10px;
 }
 
 .singleCarousel .slick-thumb {

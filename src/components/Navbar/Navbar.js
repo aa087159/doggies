@@ -16,7 +16,9 @@ export class Navbar extends Component {
 			<i className='fas fa-phone fa-2x'></i>
 		],
 		IsNavScrollAppear: true,
-		scrollOffset: [-150, -250, -190, 50]
+		scrollOffset: [-150, -250, -190, 50],
+		navOnProductsPage: ['首頁', '手作商品', '我的最愛', '購物車'],
+		navOnProductsPageLinks: ['/', '/products', '/favorites', '/cart']
 	};
 
 	static contextType = ShopContext;
@@ -30,63 +32,111 @@ export class Navbar extends Component {
 
 	handleScroll = (e) => {
 		const window = e.currentTarget;
-
 		if (this.prev > window.scrollY) {
 			this.navVisible.current.classList.remove('scrollNavShow');
 		} else if (this.prev < window.scrollY) {
 			this.navVisible.current.classList.add('scrollNavShow');
 		}
+
 		this.prev = window.scrollY;
 	};
 
 	render() {
 		const { NavOpenHandler, navOpen } = this.context;
 
-		return (
-			<>
-				<nav className='navbar' ref={this.navVisible}>
-					<ul>
-						<li>
-							<Link to='/'>
-								<img
-									className='navLogo'
-									src='./img/HomeImgs/NavLogo.png'
-									alt='img'
-								/>
-							</Link>
-						</li>
+		if (this.props.location.pathname === '/') {
+			return (
+				<>
+					<nav className='navbar' ref={this.navVisible}>
+						<ul>
+							<li>
+								<Link to='/'>
+									<img
+										className='navLogo'
+										src='./img/HomeImgs/NavLogo.png'
+										alt='img'
+									/>
+								</Link>
+							</li>
+							<div></div>
+							{this.state.NavTexts.map((navLink, index) => {
+								return (
+									<ScrollLink
+										activeClass='activer'
+										to={this.state.ScrollTo[index]}
+										spy={true}
+										smooth='easeInQuad'
+										offset={this.state.scrollOffset[index]}
+										duration={500}
+										key={index}
+									>
+										{this.state.NavIcon[index]}
+										<p className=''>
+											{this.state.NavTexts[index]}
+										</p>
+									</ScrollLink>
+								);
+							})}
+							<div></div>
+							<div></div>
+						</ul>
+					</nav>
+					<StyledHamburger
+						className='hamburger'
+						navOpen={navOpen}
+						onClick={NavOpenHandler}
+					>
 						<div></div>
-						{this.state.NavTexts.map((navLink, index) => {
-							return (
-								<ScrollLink
-									activeClass='activer'
-									to={this.state.ScrollTo[index]}
-									spy={true}
-									smooth='easeInQuad'
-									offset={this.state.scrollOffset[index]}
-									duration={500}
-									key={index}
-								>
-									{this.state.NavIcon[index]}
-									<p className=''>
-										{this.state.NavTexts[index]}
-									</p>
-								</ScrollLink>
-							);
-						})}
+					</StyledHamburger>
+				</>
+			);
+		} else {
+			return (
+				<>
+					<nav className='navbar' ref={this.navVisible}>
+						<ul>
+							<li>
+								<Link to='/'>
+									<img
+										className='navLogo'
+										src='./img/HomeImgs/NavLogo.png'
+										alt='img'
+									/>
+								</Link>
+							</li>
+							<div></div>
+							{this.state.navOnProductsPage.map(
+								(navLink, index) => {
+									return (
+										<Link
+											to={
+												this.state
+													.navOnProductsPageLinks[
+													index
+												]
+											}
+											key={index}
+										>
+											{this.state.NavIcon[index]}
+											<p className=''>{navLink}</p>
+										</Link>
+									);
+								}
+							)}
+							<div></div>
+							<div></div>
+						</ul>
+					</nav>
+					<StyledHamburger
+						className='hamburger'
+						navOpen={navOpen}
+						onClick={NavOpenHandler}
+					>
 						<div></div>
-						<div></div>
-					</ul>
-				</nav>
-				<StyledHamburger
-					className='hamburger'
-					navOpen={navOpen}
-					onClick={NavOpenHandler}
-				>
-					<div></div>
-				</StyledHamburger>
-			</>
-		);
+					</StyledHamburger>
+				</>
+			);
+		}
 	}
 }
 

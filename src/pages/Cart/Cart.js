@@ -36,8 +36,10 @@ export class Cart extends Component {
 									</div>
 								) : (
 									<>
-										<CartLeft />
-										<CartRight />
+										<CartLeft cartItems={cartItems} />
+										<CartRight
+											history={this.props.history}
+										/>
 									</>
 								)}
 							</div>

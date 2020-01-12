@@ -13,7 +13,9 @@ class ShopProvider extends Component {
 		minPrice: 0,
 		maxPrice: 0,
 		Favorites: [],
-		cart: []
+		cart: [],
+		total: 0,
+		singleCount: 0
 	};
 
 	getData = async () => {
@@ -128,6 +130,69 @@ class ShopProvider extends Component {
 		this.setState({ sortedProducts: tempProducts });
 	};
 
+	increment = (singleProductUrl) => {
+		let tempProducts = [...this.state.products];
+		let index = tempProducts.indexOf(
+			this.getSingleProduct(singleProductUrl)
+		);
+		let Product = tempProducts[index];
+		Product.count += 1;
+		this.setState(
+			{ products: tempProducts },
+			this.ItemTotal(singleProductUrl, tempProducts)
+		);
+	};
+
+	decrement = (singleProductUrl) => {
+		let tempProducts = [...this.state.products];
+		let index = tempProducts.indexOf(
+			this.getSingleProduct(singleProductUrl)
+		);
+		let Product = tempProducts[index];
+		Product.count -= 1;
+		if (Product.count < 0) {
+			Product.count = 0;
+			this.setState({ products: tempProducts });
+		} else {
+			this.setState(
+				{ products: tempProducts },
+				this.ItemTotal(singleProductUrl, tempProducts)
+			);
+		}
+	};
+
+	ItemTotal = (singleProductUrl, tempProducts) => {
+		let index = tempProducts.indexOf(
+			this.getSingleProduct(singleProductUrl)
+		);
+		let Product = tempProducts[index];
+		Product.total = Product.price * Product.count;
+		this.setState({ products: tempProducts }, this.cartTotal());
+	};
+
+	clearCart = () => {
+		let tempProducts = [...this.state.products];
+		tempProducts = tempProducts.map((product) => (product.inCart = false));
+
+		this.setState({ products: tempProducts });
+	};
+
+	cartTotal = () => {
+		let tempProducts = [...this.state.products];
+		let inCartProducts = tempProducts.filter((product) => {
+			return product.inCart;
+		});
+		let cartTotal = 0;
+		inCartProducts.map((product) => {
+			return (cartTotal += product.total);
+		});
+		this.setState({ total: cartTotal });
+	};
+
+	countChange = (e) => {
+		console.log(e);
+	};
+
 	NavOpenHandler = () => {
 		this.setState({ navOpen: !this.state.navOpen });
 	};
@@ -146,7 +211,12 @@ class ShopProvider extends Component {
 					getSingleProduct: this.getSingleProduct,
 					ToFavoritesOrCartHandler: this.ToFavoritesOrCartHandler,
 					handleChange: this.handleChange,
-					filterProducts: this.filterProducts
+					filterProducts: this.filterProducts,
+					increment: this.increment,
+					decrement: this.decrement,
+					clearCart: this.clearCart,
+					cartTotal: this.cartTotal,
+					countChange: this.countChange
 				}}
 			>
 				{this.props.children}
