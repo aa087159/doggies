@@ -24,12 +24,19 @@ $dark: #e65100;
 	}
 	.name {
 		display: flex;
+		flex-wrap: wrap;
+
 		h1 {
 			font-size: 50px;
+			flex-grow: 2;
 		}
 		i {
 			margin: auto auto auto 20px;
 			cursor: pointer;
+			flex-grow: 1;
+		}
+		p {
+			flex-grow: 1;
 		}
 	}
 	.productmaterial {

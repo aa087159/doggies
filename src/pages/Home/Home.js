@@ -26,7 +26,7 @@ export default function Home(props) {
 							<CurlySVG />
 						</Carousel>
 						<About />
-						<HomeProducts />
+						<HomeProducts value={value} />
 						<Animals />
 						<Contact />
 						<MainFooter />

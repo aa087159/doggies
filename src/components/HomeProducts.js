@@ -17,7 +17,8 @@ export class HomeProducts extends Component {
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, rem?',
 			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, rem?'
 		],
-		visible: false
+		visible: false,
+		sorts: ['embroidery', 'cloth', 'knitting', 'wooden']
 	};
 	ref = React.createRef();
 
@@ -56,7 +57,14 @@ export class HomeProducts extends Component {
 									<h1>{product}</h1>
 									<p>{this.state.texts[index]}</p>
 									<Link to='/products'>
-										<button>more</button>
+										<button
+											name={this.state.sorts[index]}
+											onClick={
+												this.props.value.filterProducts
+											}
+										>
+											more
+										</button>
 									</Link>
 								</div>
 							</div>

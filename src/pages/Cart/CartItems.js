@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ShopConsumer } from '../../context';
+import { Link } from 'react-router-dom';
 
 export class CartItems extends Component {
 	state = {
@@ -54,7 +55,10 @@ export class CartItems extends Component {
 						return (
 							<div className='cart-item' key={index}>
 								<div className='cart-item-description'>
-									<img src={images[0]} alt='' />
+									<Link to={`/products/${singleProductUrl}`}>
+										<img src={images[0]} alt='' />
+									</Link>
+
 									<p>{productName}</p>
 								</div>
 

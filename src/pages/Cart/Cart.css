@@ -157,6 +157,13 @@
   height: 6rem;
   border-radius: 50%;
   border: 4px solid #dbaba1;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.cart-item .cart-item-description img:hover {
+  -webkit-filter: brightness(85%);
+          filter: brightness(85%);
 }
 
 .cart-item .count {

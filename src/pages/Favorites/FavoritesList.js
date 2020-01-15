@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export class FavoritesList extends Component {
 	state = {
@@ -31,7 +32,9 @@ export class FavoritesList extends Component {
 							<div className='leftGroup'>
 								<h1>{productName}</h1>
 								<p>NT${price}</p>
-								<img src={images[0]} alt='' />
+								<Link to={`/products/${singleProductUrl}`}>
+									<img src={images[0]} alt='' />
+								</Link>
 							</div>
 
 							<button

@@ -7,6 +7,7 @@ export default function CartRight({ history }) {
 		<ShopConsumer>
 			{(value) => {
 				const { clearCart, total } = value;
+
 				return (
 					<div className='cart-right'>
 						<div className='price'>

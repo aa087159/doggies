@@ -172,8 +172,7 @@ class ShopProvider extends Component {
 
 	clearCart = () => {
 		let tempProducts = [...this.state.products];
-		tempProducts = tempProducts.map((product) => (product.inCart = false));
-
+		tempProducts.forEach((product) => (product.inCart = false));
 		this.setState({ products: tempProducts });
 	};
 
@@ -189,8 +188,20 @@ class ShopProvider extends Component {
 		this.setState({ total: cartTotal });
 	};
 
-	countChange = (e) => {
-		console.log(e);
+	countChange = (e, singleProductUrl) => {
+		let tempProducts = [...this.state.products];
+		let index = tempProducts.indexOf(
+			this.getSingleProduct(singleProductUrl)
+		);
+		let Product = tempProducts[index];
+
+		if (Product.count <= 0) {
+			Product.count = 0;
+			this.setState({ products: tempProducts });
+		} else {
+			Product.count = parseInt(e.target.value);
+			this.setState({ products: tempProducts });
+		}
 	};
 
 	NavOpenHandler = () => {

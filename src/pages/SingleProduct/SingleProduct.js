@@ -17,6 +17,7 @@ export class SingleProduct extends Component {
 			ToFavoritesOrCartHandler,
 			Favorites,
 			countChange,
+			cart,
 			singleCount
 		} = this.context;
 		const singleProduct = getSingleProduct(this.state.singleProductURL);
@@ -38,11 +39,11 @@ export class SingleProduct extends Component {
 			color,
 			images,
 			inFavorites,
+			inCart,
 			singleProductUrl,
 			count,
 			handCraftSort
 		} = singleProduct;
-		console.log(singleProduct);
 
 		return (
 			<div className='singleProductPage'>
@@ -66,6 +67,7 @@ export class SingleProduct extends Component {
 									)
 								}
 							></i>
+							<p>{inCart ? '已加到購物車' : '未加到購物車'}</p>
 						</div>
 						<div className='productmaterial'>
 							<p>{handCraftSort}</p>/<p>{material}</p>
@@ -102,13 +104,30 @@ export class SingleProduct extends Component {
 								type='number'
 								id='quantity'
 								name='number'
-								value={singleCount}
-								onChange={countChange}
+								value={count}
+								onChange={
+									inCart
+										? (e) => {
+												e.preventDefault();
+										  }
+										: (e) =>
+												countChange(e, singleProductUrl)
+								}
 							/>
 						</div>
 
 						<div className='addToCart'>
-							<input type='button' value='加到購物車' />
+							<input
+								type='button'
+								value={inCart ? '移出購物車' : '加到購物車'}
+								onClick={() =>
+									ToFavoritesOrCartHandler(
+										singleProductUrl,
+										cart,
+										'inCart'
+									)
+								}
+							/>
 						</div>
 						<hr />
 					</div>
