@@ -14,8 +14,7 @@ class ShopProvider extends Component {
 		maxPrice: 0,
 		Favorites: [],
 		cart: [],
-		total: 0,
-		singleCount: 0
+		total: 0
 	};
 
 	getData = async () => {
@@ -194,14 +193,8 @@ class ShopProvider extends Component {
 			this.getSingleProduct(singleProductUrl)
 		);
 		let Product = tempProducts[index];
-
-		if (Product.count <= 0) {
-			Product.count = 0;
-			this.setState({ products: tempProducts });
-		} else {
-			Product.count = parseInt(e.target.value);
-			this.setState({ products: tempProducts });
-		}
+		Product.count = parseInt(e.target.value);
+		this.setState({ products: tempProducts });
 	};
 
 	NavOpenHandler = () => {

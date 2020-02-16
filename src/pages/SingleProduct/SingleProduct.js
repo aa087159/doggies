@@ -17,8 +17,7 @@ export class SingleProduct extends Component {
 			ToFavoritesOrCartHandler,
 			Favorites,
 			countChange,
-			cart,
-			singleCount
+			cart
 		} = this.context;
 		const singleProduct = getSingleProduct(this.state.singleProductURL);
 		if (!singleProduct) {
@@ -104,6 +103,7 @@ export class SingleProduct extends Component {
 								type='number'
 								id='quantity'
 								name='number'
+								min={0}
 								value={count}
 								onChange={
 									inCart
